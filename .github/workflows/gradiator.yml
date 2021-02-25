@@ -17,10 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Feature Tests
+        id: results
         uses: fjogeleit/http-request-action@master
         with:
           url: 'https://gradiator.herokuapp.com'
           method: 'POST'
           data: '{ "projectName": "http://jacobknaack.me/book-app", "ProjectUrl": "https://book-app-content-test.herokuapp.com" }'
+          timeout: 30000
       - name: Show Response
-        run: echo ${{ steps.myRequest.outputs.response }}
+        run: echo ${{ steps.results.outputs.response }}
