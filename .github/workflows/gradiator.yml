@@ -2,19 +2,25 @@ name: Gradiator
 
 on:
   push:
-    branches: [ master, main, staging ]
+    branches:
+    - main
+    - master
+    - staging
   pull_request:
-    branches: [ master, main, staging ]
+    branches:
+    - main
+    - master
+    - staging
 
-  jobs:
-    gradiator:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Feature Tests
-          uses: fjogeleit/http-request-action@master
-          with:
-            url: 'https://https://gradiator.herokuapp.com'
-            method: 'POST'
-            data: '{ "projectName": "http://jacobknaack.me/book-app", "ProjectUrl": "https://book-app-content-test.herokuapp.com" }'
-        - name: Show Response
-          run: echo ${{ steps.myRequest.outputs.response }}
+jobs:
+  gradiator-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Feature Tests
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: 'https://https://gradiator.herokuapp.com'
+          method: 'POST'
+          data: '{ "projectName": "http://jacobknaack.me/book-app", "ProjectUrl": "https://book-app-content-test.herokuapp.com" }'
+      - name: Show Response
+        run: echo ${{ steps.myRequest.outputs.response }}
