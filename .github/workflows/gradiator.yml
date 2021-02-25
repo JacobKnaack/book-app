@@ -19,7 +19,7 @@ jobs:
       - name: Feature Tests
         uses: fjogeleit/http-request-action@master
         with:
-          url: 'https://https://gradiator.herokuapp.com'
+          url: 'https://gradiator.herokuapp.com'
           method: 'POST'
           data: '{ "projectName": "http://jacobknaack.me/book-app", "ProjectUrl": "https://book-app-content-test.herokuapp.com" }'
       - name: Show Response
